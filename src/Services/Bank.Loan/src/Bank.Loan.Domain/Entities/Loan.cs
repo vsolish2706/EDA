@@ -1,8 +1,11 @@
-using LoanService.Domain.Enums;
-using LoanService.Domain.Events;
-using LoanService.Domain.ValueObjects;
+﻿using Bank.Loan.Domain.Enums;
+using Bank.Loan.Domain.Events;
+using Bank.Loan.Domain.ValueObjects;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace LoanService.Domain.Entities;
+namespace Bank.Loan.Domain.Entities;
 
 /// <summary>
 /// Aggregate Root del dominio de préstamos.
@@ -12,22 +15,22 @@ namespace LoanService.Domain.Entities;
 public class Loan
 {
     // ── Identidad ─────────────────────────────────────────────────────────
-    public Guid   Id         { get; private set; }
+    public Guid Id { get; private set; }
     public string CustomerId { get; private set; }
 
     // ── Value Objects ─────────────────────────────────────────────────────
-    public Money        RequestedAmount { get; private set; }
-    public Money?       ApprovedAmount  { get; private set; }
-    public InterestRate? Rate           { get; private set; }
+    public Money RequestedAmount { get; private set; }
+    public Money? ApprovedAmount { get; private set; }
+    public InterestRate? Rate { get; private set; }
 
     // ── Estado ────────────────────────────────────────────────────────────
-    public LoanStatus Status          { get; private set; }
-    public int        TermMonths      { get; private set; }
-    public string?    RejectionReason { get; private set; }
+    public LoanStatus Status { get; private set; }
+    public int TermMonths { get; private set; }
+    public string? RejectionReason { get; private set; }
 
     // ── Auditoría ─────────────────────────────────────────────────────────
-    public DateTime  CreatedAt  { get; private set; }
-    public DateTime? UpdatedAt  { get; private set; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime? UpdatedAt { get; private set; }
 
     // ── Domain Events ─────────────────────────────────────────────────────
     private readonly List<IDomainEvent> _domainEvents = new();
@@ -49,12 +52,12 @@ public class Loan
 
         var loan = new Loan
         {
-            Id              = Guid.NewGuid(),
-            CustomerId      = customerId,
+            Id = Guid.NewGuid(),
+            CustomerId = customerId,
             RequestedAmount = new Money(amount),
-            TermMonths      = termMonths,
-            Status          = LoanStatus.Pending,
-            CreatedAt       = DateTime.UtcNow
+            TermMonths = termMonths,
+            Status = LoanStatus.Pending,
+            CreatedAt = DateTime.UtcNow
         };
 
         loan._domainEvents.Add(new LoanCreatedDomainEvent(
@@ -71,7 +74,7 @@ public class Loan
         if (Status != LoanStatus.Pending)
             throw new InvalidOperationException($"No se puede evaluar un préstamo en estado {Status}.");
 
-        Status    = LoanStatus.UnderRiskEvaluation;
+        Status = LoanStatus.UnderRiskEvaluation;
         UpdatedAt = DateTime.UtcNow;
     }
 
@@ -82,9 +85,9 @@ public class Loan
             throw new InvalidOperationException($"No se puede aprobar un préstamo en estado {Status}.");
 
         ApprovedAmount = new Money(approvedAmount);
-        Rate           = new InterestRate(interestRate);
-        Status         = LoanStatus.Approved;
-        UpdatedAt      = DateTime.UtcNow;
+        Rate = new InterestRate(interestRate);
+        Status = LoanStatus.Approved;
+        UpdatedAt = DateTime.UtcNow;
 
         _domainEvents.Add(new LoanApprovedDomainEvent(
             Id, approvedAmount, interestRate, UpdatedAt.Value));
@@ -99,8 +102,8 @@ public class Loan
             throw new ArgumentException("El motivo de rechazo es requerido.", nameof(reason));
 
         RejectionReason = reason;
-        Status          = LoanStatus.Rejected;
-        UpdatedAt       = DateTime.UtcNow;
+        Status = LoanStatus.Rejected;
+        UpdatedAt = DateTime.UtcNow;
 
         _domainEvents.Add(new LoanRejectedDomainEvent(Id, reason, UpdatedAt.Value));
     }
@@ -111,7 +114,7 @@ public class Loan
         if (Status != LoanStatus.Approved)
             throw new InvalidOperationException("Solo se pueden desembolsar préstamos aprobados.");
 
-        Status    = LoanStatus.Disbursed;
+        Status = LoanStatus.Disbursed;
         UpdatedAt = DateTime.UtcNow;
 
         _domainEvents.Add(new LoanDisbursedDomainEvent(
@@ -125,8 +128,8 @@ public class Loan
             throw new InvalidOperationException($"No se puede cancelar un préstamo en estado {Status}.");
 
         RejectionReason = reason;
-        Status          = LoanStatus.Cancelled;
-        UpdatedAt       = DateTime.UtcNow;
+        Status = LoanStatus.Cancelled;
+        UpdatedAt = DateTime.UtcNow;
 
         _domainEvents.Add(new LoanCancelledDomainEvent(Id, reason, UpdatedAt.Value));
     }
