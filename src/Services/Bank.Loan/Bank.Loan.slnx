@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/src/">
-    <Project Path="src/Bank.Loan.Api/Bank.Loan.Api.csproj" />
-    <Project Path="src/Bank.Loan.Application/Bank.Loan.Application.csproj" />
-    <Project Path="src/Bank.Loan.Domain/Bank.Loan.Domain.csproj" />
-    <Project Path="src/Bank.Loan.Infrastructure/Bank.Loan.Infrastructure.csproj" />
-  </Folder>
-</Solution>

@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/src/">
-    <Project Path="src/Bank.Notification.Api/Bank.Notification.Api.csproj" Id="0281f97d-7d92-489c-8cf6-66421469360d" />
-    <Project Path="src/Bank.Notification.Application/Bank.Notification.Application.csproj" Id="cf14485b-1c6d-466e-9aaa-376554a701ed" />
-    <Project Path="src/Bank.Notification.Domain/Bank.Notification.Domain.csproj" Id="46f52036-f989-4a39-876d-13d638119f7b" />
-    <Project Path="src/Bank.Notification.Infrastructure/Bank.Notification.Infrastructure.csproj" Id="d88419a5-e2ab-4a62-80a6-cab92e7d6792" />
-  </Folder>
-</Solution>

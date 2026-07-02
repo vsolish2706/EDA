@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/src/">
-    <Project Path="src/Bank.Risk.Api/Bank.Risk.Api.csproj" Id="ba9ff34a-ba92-4797-a318-afd4123f9093" />
-    <Project Path="src/Bank.Risk.Application/Bank.Risk.Application.csproj" Id="80b74386-7121-4154-b651-e5f774d524a0" />
-    <Project Path="src/Bank.Risk.Domain/Bank.Risk.Domain.csproj" Id="41c80c88-60cd-4e90-af67-e859b90d6fb8" />
-    <Project Path="src/Bank.Risk.Infrastructure/Bank.Risk.Infrastructure.csproj" Id="28d1169c-6618-4a6a-8ab3-bbf394bfd2a2" />
-  </Folder>
-</Solution>

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Hotel.Inventory.Api/Hotel.Inventory.Api.csproj" Id="f93546a0-1acc-42a7-8972-ada36e5c4cfc" />
+    <Project Path="src/Hotel.Inventory.Application/Hotel.Inventory.Application.csproj" Id="163152c1-3d66-4402-a148-f30773a008c6" />
+    <Project Path="src/Hotel.Inventory.Domain/Hotel.Inventory.Domain.csproj" Id="d3c21882-8a60-44ff-9ac9-871190d7d5dd" />
+    <Project Path="src/Hotel.Inventory.Infrastructure/Hotel.Inventory.Infrastructure.csproj" Id="2b23bc4b-3d32-442b-afb4-21af885a697c" />
+  </Folder>
+</Solution>

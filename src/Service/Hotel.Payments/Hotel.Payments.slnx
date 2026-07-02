@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Hotel.Payments.Api/Hotel.Payments.Api.csproj" Id="d92f8918-c872-4b33-a027-9d165e2b3f6a" />
+    <Project Path="src/Hotel.Payments.Application/Hotel.Payments.Application.csproj" Id="a83b2343-4db6-44b4-9413-0ce29804b318" />
+    <Project Path="src/Hotel.Payments.Domain/Hotel.Payments.Domain.csproj" Id="ccdce513-f93d-48f7-b6d1-9b2a7ede20b3" />
+    <Project Path="src/Hotel.Payments.Infrastructure/Hotel.Payments.Infrastructure.csproj" Id="8a9da705-9c46-4fda-9bcb-e8fa490a03fe" />
+  </Folder>
+</Solution>
